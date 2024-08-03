@@ -1,8 +1,8 @@
 from flask import Flask, request, jsonify
 import joblib
 import os
-import subprocess
 import logging
+from save_model import save_model
 
 app = Flask(__name__)
 
@@ -14,20 +14,15 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 def create_model():
     try:
-        # Activate the virtual environment and run save_model.py to create the model and vectorizer
-        venv_python = os.path.join(os.environ['VIRTUAL_ENV'], 'Scripts', 'python.exe')
-        result = subprocess.run([venv_python, 'save_model.py'], check=True, capture_output=True, text=True)
-        logging.info(result.stdout)
-        logging.error(result.stderr)
-    except subprocess.CalledProcessError as e:
-        logging.error(f"An error occurred while running save_model.py: {e}")
-        logging.error(e.stdout)
-        logging.error(e.stderr)
+        # Run save_model function to create the model and vectorizer
+        save_model()
+    except Exception as e:
+        logging.error(f"An error occurred while running save_model: {e}")
         raise
 
 # Check if the model and vectorizer files exist, if not, create them
 if not os.path.exists(MODEL_PATH) or not os.path.exists(VECTORIZER_PATH):
-    logging.info("Model or vectorizer file not found. Running save_model.py to create the model and vectorizer.")
+    logging.info("Model or vectorizer file not found. Running save_model to create the model and vectorizer.")
     create_model()
 
 # Load the model and vectorizer
