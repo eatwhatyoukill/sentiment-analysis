@@ -44,9 +44,6 @@ To run the application, use the following command:
 ```bash
 python app.py
 ```
-
-## Usage
-
 You can send a POST request to the `/predict` endpoint with the text you want to analyze. For example, using curl:
 
 ```bash
@@ -91,6 +88,7 @@ Ensure the following secrets are added to your GitHub repository:
 2. The GitHub Actions workflow will automatically trigger and deploy the application to Azure.
 
 ## Contributing
+[Report an Issue or Request a Feature](https://github.com/eatwhatyoukill/sentiment-analysis/issues/new?assignees=&labels=&template=issue-template.md&title=)
 
 Contributions are welcome! Please follow these steps to contribute:
 
