@@ -1,5 +1,8 @@
 # Sentiment Analysis Tool
 
+![Build Status](https://img.shields.io/github/workflow/status/eatwhatyoukill/sentiment-analysis/CI)
+![License](https://img.shields.io/github/license/eatwhatyoukill/sentiment-analysis)
+
 This project is a Sentiment Analysis Tool that classifies text into positive or negative sentiment using machine learning. It provides a RESTful API built with Flask and uses scikit-learn for model training.
 
 ## Introduction
